@@ -302,11 +302,11 @@ class Drawer extends Component {
                                         }
                                         else if (label_ === 'https://w3id.org/opentrafficlights/thesauri/signalphase/5' || label_ === 'https://w3id.org/opentrafficlights/thesauri/signalphase/6') {
                                             // green
-                                            return (<td>{toLane}:{doc.lanes[toLane]}<p style={{color: 'green'}}>{count}</p><div><p>minEndTime: {minEndTimes[fromLane][toLane]}</p><p>maxEndTime: {maxEndTimes[fromLane][toLane]}</p></div></td>);
+                                            return (<td>{toLane}:{doc.lanes[toLane]}<p style={{color: 'green'}}>simpleCountdown: {count}</p><div><p>minEndTime: {minEndTimes[fromLane][toLane]}</p><p>maxEndTime: {maxEndTimes[fromLane][toLane]}</p></div></td>);
                                         }
                                         else {
                                             // orange
-                                            return (<td>{toLane}:{doc.lanes[toLane]}<p style={{ color: 'orange'}}>{count}</p><div><p>minEndTime: {minEndTimes[fromLane][toLane]}</p><p>maxEndTime: {maxEndTimes[fromLane][toLane]}</p></div></td>);
+                                            return (<td>{toLane}:{doc.lanes[toLane]}<p style={{ color: 'orange'}}>simpleCountdown: {count}</p><div><p>minEndTime: {minEndTimes[fromLane][toLane]}</p><p>maxEndTime: {maxEndTimes[fromLane][toLane]}</p></div></td>);
                                         }
                                     })
                                 }</tr>);
