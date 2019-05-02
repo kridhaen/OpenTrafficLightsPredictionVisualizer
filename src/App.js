@@ -1,23 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Drawer from "./Visualizer/Drawer.js";
+import "./Visualizer/Drawer.css";
+import "./Visualizer/SignalGroupDrawer.js";
+import SignalGroupDrawer from "./Visualizer/SignalGroupDrawer";
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/*<Drawer className="Drawer"/>*/}
+        <SignalGroupDrawer/>
       </header>
     </div>
   );
