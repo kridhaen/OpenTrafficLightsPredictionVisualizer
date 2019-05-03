@@ -10,8 +10,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Drawer className="Drawer"/>
-        {/*<SignalGroupDrawer/>*/}
+        {/*<Drawer/>*/}
+        <SignalGroupDrawer/>
       </header>
     </div>
   );

@@ -21,7 +21,7 @@ export default class FragmentHandler {
 
                 return a < b ? -1 : a > b ? 1 : 0;
             }
-        ).forEach((observation) => {
+        ).forEach((observation) => {    //TODO: probably only need the last observation
             let generatedAtTime = observation.object.value;
 
             signalGroups.forEach((signalGroup) => {
@@ -30,7 +30,14 @@ export default class FragmentHandler {
                     let minEndTime = store.getQuads(signalState.object, namedNode('https://w3id.org/opentrafficlights#minEndTime'), null, observation.subject)[0].object.value;
                     let maxEndTime = store.getQuads(signalState.object, namedNode('https://w3id.org/opentrafficlights#maxEndTime'), null, observation.subject)[0].object.value;
                     let signalPhase = store.getQuads(signalState.object, namedNode('https://w3id.org/opentrafficlights#signalPhase'), null, observation.subject)[0].object.value;
-                    let likelyTime = store.getQuads(signalState.object, namedNode('https://w3id.org/opentrafficlights#likelyTime'), null, observation.subject)[0].object.value;
+                    let likelyTime = undefined;
+                    try{
+                        likelyTime = store.getQuads(signalState.object, namedNode('https://w3id.org/opentrafficlights#likelyTime'), null, observation.subject)[0].object.value;
+                    }
+                    catch (e) {
+                        //TODO: clean!
+                        console.log("no likelyTime");
+                    }
 
                     if(!returnObject[signalGroup]){
                         returnObject[signalGroup] = {};

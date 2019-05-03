@@ -171,20 +171,20 @@ class Drawer extends Component {
             await this.calcHistoricData(store);
             this.showLatest(store);
 
-            let count = 0;
+            // let count = 0;
 
             // HISTORY
-            let prev = store.getQuads(null, namedNode('http://www.w3.org/ns/hydra/core#previous'), null)[0];
-            while (prev && count < this.AMOUNT_OF_FRAGMENTS) {
-                count++;
-
-                doc = await this.download(prev.object.value);
-                store = await this.parseAndStoreQuads(doc);
-
-                await this.calcHistoricData(store);
-
-                prev = store.getQuads(null, namedNode('http://www.w3.org/ns/hydra/core#previous'), null)[0];
-            }
+            // let prev = store.getQuads(null, namedNode('http://www.w3.org/ns/hydra/core#previous'), null)[0];
+            // while (prev && count < this.AMOUNT_OF_FRAGMENTS) {
+            //     count++;
+            //
+            //     doc = await this.download(prev.object.value);
+            //     store = await this.parseAndStoreQuads(doc);
+            //
+            //     await this.calcHistoricData(store);
+            //
+            //     prev = store.getQuads(null, namedNode('http://www.w3.org/ns/hydra/core#previous'), null)[0];
+            // }
 
             doc = await this.download(this.DATASET_URL);
             store = await this.parseAndStoreQuads(doc);
@@ -284,11 +284,13 @@ class Drawer extends Component {
         return (
             <div className="Drawer">
                 <table>
-
+                    <thead>
                     <tr>
                         <th>From Lane:</th>
                         <th>To Lanes:</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     {Object.keys(this.vertreklanen).map(
                         function (fromLane) {
                             return (
@@ -312,7 +314,7 @@ class Drawer extends Component {
                                 }</tr>);
                         }
                     )}
-
+                    </tbody>
                 </table>
             </div>
         );

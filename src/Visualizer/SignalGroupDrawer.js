@@ -5,7 +5,7 @@ import FragmentHandler from '../Parser/FragmentHandler.js';
 export default class SignalGroupDrawer extends Component{
     constructor(props){
         super(props);
-        this.DATASET_URL = 'http://localhost:3000/latest';
+        this.DATASET_URL = 'http://localhost:8080/latest';
 
         this.state = {
             data: {}
@@ -16,6 +16,7 @@ export default class SignalGroupDrawer extends Component{
         setInterval(() => {
             Downloader.download(this.DATASET_URL).then((fragment) => {
                 FragmentHandler.handleFragment(fragment).then((returnObject) => {
+                    console.log("download success");
                     this.setState({
                         data: returnObject,
                     });
@@ -29,8 +30,9 @@ export default class SignalGroupDrawer extends Component{
 
     render(){
         let { data } = this.state;
+        console.log("render");
         return (
-            <div>
+            <div className="Drawer">
                 <table>
                     <thead>
                     <tr>
@@ -42,6 +44,7 @@ export default class SignalGroupDrawer extends Component{
                     {Object.keys(data).map((signalGroup) => {
                         return (
                             <tr>
+                                <td>signalGroup: {signalGroup}</td>
                                 <td>generatedAtTime: {data[signalGroup] ? data[signalGroup].generatedAtTime : "no data"}</td>
                                 <td>minEndTime: {data[signalGroup] ? data[signalGroup].minEndTime : "no data"}</td>
                                 <td>maxEndTime: {data[signalGroup] ? data[signalGroup].maxEndTime : "no data"}</td>
