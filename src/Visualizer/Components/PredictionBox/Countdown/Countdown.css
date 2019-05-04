@@ -1,0 +1,24 @@
+.circle
+{
+    width:50px;
+    height:50px;
+    border-radius:25px;
+    font-size:50px;
+    color:#fff;
+    line-height:50px;
+    text-align:center;
+    background:#111
+}
+
+.Countdown{
+    box-sizing: border-box;
+    height: 35%;
+}
+
+.Countdown_value{
+    box-sizing: border-box;
+    font-size: 5em;
+    position: relative;
+    top: 15%;
+    border-radius:25px;
+}

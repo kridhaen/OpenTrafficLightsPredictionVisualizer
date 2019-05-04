@@ -1,0 +1,38 @@
+.MinMaxTable{
+    box-sizing: border-box;
+    overflow: hidden;
+    height: auto;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    /*font-size: 100%;*/
+}
+
+.MinMaxTable_minimum_box{
+    box-sizing: border-box;
+    width: 40%;
+    height: 100%;
+}
+.MinMaxTable_maximum_box{
+    box-sizing: border-box;
+    width: 40%;
+    height: 100%;
+}
+
+.MinMaxTable_minimum_title {
+    background-color: #12939a;
+    float: left;
+}
+
+.MinMaxTable_maximum_title {
+    background-color: #12939a;
+    float: left;
+}
+
+.MinMaxTable_minimum_value {
+    background-color: #12939a;
+}
+
+.MinMaxTable_maximum_value {
+    background-color: #12939a;
+}

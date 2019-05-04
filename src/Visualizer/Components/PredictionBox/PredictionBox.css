@@ -1,0 +1,32 @@
+.PredictionBox{
+    box-sizing: border-box;
+    width: 100%;
+    height: 600px;
+    /*padding: 0;*/
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+/*.Countdown{*/
+/*    height: 30%;*/
+/*    background-color: green;*/
+/*}*/
+
+/*.MinMaxTable{*/
+/*    height: 10%;*/
+/*}*/
+
+/*.BarChart{*/
+/*    height: 40%;*/
+/*}*/
+
+/*.BarChart {*/
+/*    box-sizing: border-box;*/
+/*    !*transform: scale(0.5);*!*/
+/*}*/
+
+/*.Countdown {*/
+/*    box-sizing: border-box;*/
+/*    font-size: xx-large;*/
+/*}*/
