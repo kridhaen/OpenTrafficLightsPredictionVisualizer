@@ -62,7 +62,7 @@ export default class FragmentHandler {
                 return a < b ? -1 : a > b ? 1 : 0;
             }
         )[0];
-               //TODO: probably only need the last observation
+        if(observation){
             let generatedAtTime = observation.object.value;
 
             signalGroups.forEach((signalGroup) => {
@@ -93,7 +93,7 @@ export default class FragmentHandler {
 
                 }
             });
-
+        }
 
         return returnObject;
     }
