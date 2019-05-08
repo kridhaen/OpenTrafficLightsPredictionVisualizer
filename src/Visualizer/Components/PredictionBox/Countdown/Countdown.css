@@ -18,7 +18,7 @@
 .Countdown_value{
     box-sizing: border-box;
     font-size: 5em;
-    position: relative;
-    top: 15%;
+    /*position: relative;*/
+    /*top: 15%;*/
     border-radius:25px;
 }

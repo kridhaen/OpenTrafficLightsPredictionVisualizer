@@ -3,7 +3,10 @@ import './Countdown.css';
 
 export default class Countdown extends Component{
     render(){
-        const {count, color} = this.props;
+        let {count, color} = this.props;
+        if(count === undefined){
+            count = "X";
+        }
         let textColor = "white";
         if(color === 0){
             textColor = "orange";

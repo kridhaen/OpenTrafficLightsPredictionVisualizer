@@ -16,7 +16,7 @@ export default class PredictionBox extends Component{
             minEndTimeGraphData: {},
             maxEndTimeGraphData: {},
             likelyTimeGraphData: {},
-            xValues: [],
+            xValues: {},
         };
 
         this.graphDataCounter = {};
@@ -62,7 +62,9 @@ export default class PredictionBox extends Component{
                 let countdown = data[signalGroup] && (new Date(data[signalGroup][type]).getTime() - new Date(data[signalGroup].generatedAtTime)) / 1000;
                 graphData[signalGroup].push({x: generatedAtTime, y: countdown});
                 if(this.graphDataCounter[signalGroup]%4 === 0){
-                    xValues[signalGroup].push(generatedAtTime);
+                    if(generatedAtTime!==xValues[signalGroup][xValues[signalGroup].length-1]){
+                        xValues[signalGroup].push(generatedAtTime);
+                    }
                     this.graphDataCounter[signalGroup] = 0;
                 }
                 if(xValues[signalGroup].length > 5){
@@ -80,7 +82,7 @@ export default class PredictionBox extends Component{
     render(){
         let { data, minEndTimeGraphData, maxEndTimeGraphData, likelyTimeGraphData,  xValues } = this.state;
         let signalGroup = "https://opentrafficlights.org/id/signalgroup/K648/4";
-        let countdown = data[signalGroup] && (new Date(data[signalGroup].minEndTime).getTime() - new Date(data[signalGroup].generatedAtTime)) / 1000;
+        let countdown = data[signalGroup] && data[signalGroup].likelyTime && (new Date(data[signalGroup].likelyTime).getTime() - new Date(data[signalGroup].generatedAtTime)) / 1000;
         let minEndTime = data[signalGroup] && (new Date(data[signalGroup].minEndTime).getTime() - new Date(data[signalGroup].generatedAtTime)) / 1000;
         let maxEndTime = data[signalGroup] && (new Date(data[signalGroup].maxEndTime).getTime() - new Date(data[signalGroup].generatedAtTime)) / 1000;
         let color = "-1";
