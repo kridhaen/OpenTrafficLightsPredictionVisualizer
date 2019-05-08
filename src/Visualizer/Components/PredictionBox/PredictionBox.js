@@ -13,7 +13,9 @@ export default class PredictionBox extends Component{
         this._constructGraphData =this._constructGraphData.bind(this);
         this.state = {
             data: {},
-            graphData: {},
+            minEndTimeGraphData: {},
+            maxEndTimeGraphData: {},
+            likelyTimeGraphData: {},
             xValues: [],
         };
 
@@ -28,7 +30,9 @@ export default class PredictionBox extends Component{
                     this.setState({
                         data: returnObject,
                     });
-                    this._constructGraphData();
+                    this._constructGraphData("minEndTime", "minEndTimeGraphData");
+                    this._constructGraphData("maxEndTime", "maxEndTimeGraphData");
+                    this._constructGraphData("likelyTime", "likelyTimeGraphData");
                 });
             }).catch(() => {
                     console.log("download error");
@@ -37,8 +41,9 @@ export default class PredictionBox extends Component{
         }, 1000);
     }
 
-    _constructGraphData(){
-        let {data, graphData, xValues} = this.state;
+    _constructGraphData(type, graph){
+        let {data, xValues} = this.state;
+        let graphData = this.state[graph];
         Object.keys(data).forEach((signalGroup) => {
             if(data[signalGroup]){
                 if(!graphData[signalGroup]){
@@ -54,7 +59,7 @@ export default class PredictionBox extends Component{
                     graphData[signalGroup].shift();
                 }
                 let generatedAtTime = data[signalGroup] && data[signalGroup].generatedAtTime;
-                let countdown = data[signalGroup] && (new Date(data[signalGroup].minEndTime).getTime() - new Date(data[signalGroup].generatedAtTime)) / 1000;
+                let countdown = data[signalGroup] && (new Date(data[signalGroup][type]).getTime() - new Date(data[signalGroup].generatedAtTime)) / 1000;
                 graphData[signalGroup].push({x: generatedAtTime, y: countdown});
                 if(this.graphDataCounter[signalGroup]%4 === 0){
                     xValues[signalGroup].push(generatedAtTime);
@@ -66,15 +71,14 @@ export default class PredictionBox extends Component{
                 this.graphDataCounter[signalGroup]++;
             }
         });
-        this.setState({
-            graphData: graphData,
-            xValues: xValues,
-        });
-
+        let newState = {};
+        newState[graph] = graphData;
+        newState["xValues"] = xValues;
+        this.setState(newState);
     }
 
     render(){
-        let { data, graphData, xValues } = this.state;
+        let { data, minEndTimeGraphData, maxEndTimeGraphData, likelyTimeGraphData,  xValues } = this.state;
         let signalGroup = "https://opentrafficlights.org/id/signalgroup/K648/4";
         let countdown = data[signalGroup] && (new Date(data[signalGroup].minEndTime).getTime() - new Date(data[signalGroup].generatedAtTime)) / 1000;
         let minEndTime = data[signalGroup] && (new Date(data[signalGroup].minEndTime).getTime() - new Date(data[signalGroup].generatedAtTime)) / 1000;
@@ -96,7 +100,7 @@ export default class PredictionBox extends Component{
             <div className="PredictionBox">
                 <Countdown count={countdown} color={color} className="PredictionBox_Countdown"/>
                 <MinMaxTable min={minEndTime} max={maxEndTime} className="PredictionBox_MinMaxTable"/>
-                <BarChart data={graphData[signalGroup]} xValues={xValues[signalGroup]} className="PredictionBox_BarChart"/>
+                <BarChart minData={minEndTimeGraphData[signalGroup]} maxData={maxEndTimeGraphData[signalGroup]} likelyData={likelyTimeGraphData[signalGroup]} xValues={xValues[signalGroup]} className="PredictionBox_BarChart"/>
             </div>
         )
     }
