@@ -11,12 +11,12 @@ class LineChart extends Component {
         return (
             <div className="BarChart">
                 <p>{title}</p>
-                <XYPlot height={300} width={1000} xType={"ordinal"}>
+                <XYPlot height={300} width={1000} xType={"time"}>
                     <HorizontalGridLines />
                     <LineSeries data={minData} barWidth={0.95} color={"green"}/>
                     <LineSeries data={likelyData} barWidth={0.95} color={"blue"}/>
                     <LineSeries data={maxData} barWidth={0.95} color={"red"}/>
-                    <XAxis title={"Time"} tickValues={xValues}/>
+                    <XAxis title={"Time"}/>
                     <YAxis title={"Duration (s)"}/>
                 </XYPlot>
             </div>

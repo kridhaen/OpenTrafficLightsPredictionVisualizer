@@ -7,7 +7,7 @@ export default class Countdown extends Component{
         if(count === undefined){
             count = "X";
         }
-        let textColor = "white";
+        let textColor = "black";
         if(color === 0){
             textColor = "orange";
         }
