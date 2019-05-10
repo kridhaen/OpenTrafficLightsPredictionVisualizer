@@ -1,0 +1,10 @@
+.PhaseColorGraph{
+    box-sizing: border-box;
+    height: 150px;
+    overflow: auto;
+    padding-top: 20px;
+    /*justify-content: center;*/
+    align-items: center;
+    display: flex;
+    /*padding-left: 20px;*/
+}

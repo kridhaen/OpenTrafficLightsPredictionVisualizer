@@ -6,12 +6,11 @@ import './Graph.css';
 class LineChart extends Component {
 
     render() {
-        const {minData, maxData, likelyData, title, xValues} = this.props;
-        console.log(xValues);
+        const {minData, maxData, likelyData, title} = this.props;
         return (
             <div className="BarChart">
                 <p>{title}</p>
-                <XYPlot height={300} width={1000} xType={"time"}>
+                <XYPlot height={300} width={800} xType={"time"}>
                     <HorizontalGridLines />
                     <LineSeries data={minData} barWidth={0.95} color={"green"}/>
                     <LineSeries data={likelyData} barWidth={0.95} color={"blue"}/>

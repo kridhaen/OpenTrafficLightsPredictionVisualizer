@@ -1,13 +1,21 @@
 export default class Downloader{
     static download(_url){
-        console.log("\x1b[32m","downloading: "+_url,"\x1b[0m");
+        console.info("downloading: "+_url);
         return new Promise((resolve,reject) => {
+            try {
 
-            fetch(_url)
-                .then(function(response) {
-                    resolve(response.text());
-                })
-                .catch(err => {console.log("\x1b[31m\x1b[47m",err,"\x1b[0m"); reject(err)});
+
+                fetch(_url)
+                    .then(function (response) {
+                        resolve(response.text());
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        reject(err)
+                    });
+            }catch (e) {
+                console.error(_url);
+            }
         });
     }
 }
