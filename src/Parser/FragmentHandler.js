@@ -84,11 +84,11 @@ export default class FragmentHandler {
                         returnObject[signalGroup] = {};
                     }
                     returnObject[signalGroup] = {
-                        "generatedAtTime": generatedAtTime,
-                        "minEndTime": minEndTime,
-                        "maxEndTime": maxEndTime,
+                        "generatedAtTime": generatedAtTime && new Date(generatedAtTime),
+                        "minEndTime": minEndTime && new Date(minEndTime),
+                        "maxEndTime": maxEndTime && new Date(maxEndTime),
                         "signalPhase": signalPhase,
-                        "likelyTime": likelyTime
+                        "likelyTime": likelyTime && new Date(likelyTime)
                     }
 
                 }

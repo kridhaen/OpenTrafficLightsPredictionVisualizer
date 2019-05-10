@@ -12,7 +12,7 @@ function App() {
       <header className="App-header">
         {/*<Drawer/>*/}
         {/*<SignalGroupDrawer/>*/}
-        <PredictionBox/>
+        <PredictionBox datasetUrl={'https://lodi.ilabt.imec.be/observer/rawdata/latest'}/>
       </header>
     </div>
   );
