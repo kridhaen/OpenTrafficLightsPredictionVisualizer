@@ -59,7 +59,7 @@ export default class FragmentHandler {
                 a = new Date(a.object.value).getTime();
                 b = new Date(b.object.value).getTime();
 
-                return a < b ? -1 : a > b ? 1 : 0;
+                return a > b ? -1 : a < b ? 1 : 0;
             }
         )[0];
         if(observation){
