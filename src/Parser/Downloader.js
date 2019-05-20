@@ -1,6 +1,5 @@
 export default class Downloader{
     static download(_url){
-        console.info("downloading: "+_url);
         return new Promise((resolve,reject) => {
             try {
 
