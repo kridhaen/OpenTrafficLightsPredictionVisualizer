@@ -27,7 +27,7 @@ export default class PredictionBox extends Component{
         setInterval(() => {
             Downloader.download(this.DATASET_URL).then((fragment) => {
                 FragmentHandler.handleFragment(fragment).then((returnObject) => {
-                    console.log("download success:"+this.DATASET_URL);
+                    // console.log("download success:"+this.DATASET_URL);
                     this.setState({
                         data: returnObject,
                     });
