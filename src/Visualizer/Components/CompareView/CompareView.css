@@ -1,0 +1,20 @@
+.CompareView{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 2%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/*.CompareView_left{*/
+/*    float: left;*/
+/*}*/
+/*.CompareView_right{*/
+/*    float: left;*/
+/*}*/
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: lightblue;
+    }
+}
