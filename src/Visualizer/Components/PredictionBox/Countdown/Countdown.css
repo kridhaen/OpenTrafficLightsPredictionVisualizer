@@ -12,13 +12,15 @@
 
 .Countdown{
     box-sizing: border-box;
-    height: 35%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
 }
 
 .Countdown_value{
     box-sizing: border-box;
     font-size: 5em;
-    /*position: relative;*/
-    /*top: 15%;*/
-    border-radius:25px;
+    /*border-radius:25px;*/
+    /*border: solid 10px black;*/
 }
