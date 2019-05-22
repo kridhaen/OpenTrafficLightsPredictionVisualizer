@@ -6,6 +6,7 @@ import PhaseColorGraph from "./PhaseColorGraph/PhaseColorGraph.js";
 import "./PredictionBox.css";
 import Downloader from "../../../Parser/Downloader";
 import FragmentHandler from "../../../Parser/FragmentHandler";
+import Dropdown from "./Selector/Dropdown";
 
 export default class PredictionBox extends Component{
     constructor(props){
@@ -13,6 +14,8 @@ export default class PredictionBox extends Component{
         this.DATASET_URL = props.datasetUrl;
         this._constructGraphData =this._constructGraphData.bind(this);
         this._constructColorGraphData = this._constructColorGraphData.bind(this);
+        this._constructSignalGroup = this._constructSignalGroup.bind(this);
+        this.setActiveSignalGroup = this.setActiveSignalGroup.bind(this);
         this.state = {
             data: {},
             colorData: {},
@@ -20,6 +23,8 @@ export default class PredictionBox extends Component{
             minEndTimeGraphData: {},
             maxEndTimeGraphData: {},
             likelyTimeGraphData: {},
+            signalGroups: {},
+            activeSignalGroup: "https://opentrafficlights.org/id/signalgroup/K648/4",
         };
     }
 
@@ -35,6 +40,7 @@ export default class PredictionBox extends Component{
                     this._constructGraphData("maxEndTime", "maxEndTimeGraphData");
                     this._constructGraphData("likelyTime", "likelyTimeGraphData");
                     this._constructColorGraphData();
+                    this._constructSignalGroup(Object.keys(returnObject));
                 });
             }).catch(() => {
                     console.error("download error"+this.DATASET_URL);
@@ -92,9 +98,35 @@ export default class PredictionBox extends Component{
         this.setState(newState);
     }
 
+    _constructSignalGroup(newSignalGroups){
+        let { signalGroups, activeSignalGroup } = this.state;
+        newSignalGroups.forEach((sg) => {
+            signalGroups[sg] = 0;
+            if(activeSignalGroup !== undefined){
+                activeSignalGroup = sg;
+            }
+        });
+        this.setState({
+            signalGroups: signalGroups,
+            activeSignalGroup: activeSignalGroup,
+        });
+    }
+
+    setActiveSignalGroup(signalGroup){
+        this.setState({
+            data: {},
+            colorData: {},
+            colorDataOldest: {},
+            minEndTimeGraphData: {},
+            maxEndTimeGraphData: {},
+            likelyTimeGraphData: {},
+            activeSignalGroup: signalGroup,
+        });
+    }
+
     render(){
-        let { data, minEndTimeGraphData, maxEndTimeGraphData, likelyTimeGraphData, colorData } = this.state;
-        let signalGroup = "https://opentrafficlights.org/id/signalgroup/K648/4";
+        let { signalGroups, activeSignalGroup, data, minEndTimeGraphData, maxEndTimeGraphData, likelyTimeGraphData, colorData } = this.state;
+        let signalGroup = activeSignalGroup;
         let countdown = data[signalGroup] && data[signalGroup].likelyTime && (data[signalGroup].likelyTime.getTime() - data[signalGroup].generatedAtTime) / 1000;
         let minEndTime = data[signalGroup] && (data[signalGroup].minEndTime.getTime() - data[signalGroup].generatedAtTime) / 1000;
         let maxEndTime = data[signalGroup] && (data[signalGroup].maxEndTime.getTime() - data[signalGroup].generatedAtTime) / 1000;
@@ -117,6 +149,7 @@ export default class PredictionBox extends Component{
 
         return (
             <div className="PredictionBox">
+                <Dropdown options={signalGroups} activeValue={activeSignalGroup} onChange={this.setActiveSignalGroup}/>
                 <Countdown count={countdown} color={color} className="PredictionBox_Countdown"/>
                 <MinMaxTable min={minEndTime} max={maxEndTime} className="PredictionBox_MinMaxTable"/>
                 <BarChart minData={minEndTimeGraphData[signalGroup]} maxData={maxEndTimeGraphData[signalGroup]} likelyData={likelyTimeGraphData[signalGroup]} className="PredictionBox_BarChart"/>
