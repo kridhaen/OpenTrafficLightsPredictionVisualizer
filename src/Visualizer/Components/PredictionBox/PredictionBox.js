@@ -102,7 +102,7 @@ export default class PredictionBox extends Component{
         let { signalGroups, activeSignalGroup } = this.state;
         newSignalGroups.forEach((sg) => {
             signalGroups[sg] = 0;
-            if(activeSignalGroup !== undefined){
+            if(activeSignalGroup === undefined){
                 activeSignalGroup = sg;
             }
         });
@@ -113,6 +113,7 @@ export default class PredictionBox extends Component{
     }
 
     setActiveSignalGroup(signalGroup){
+        console.log(signalGroup);
         this.setState({
             data: {},
             colorData: {},
