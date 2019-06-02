@@ -160,7 +160,7 @@ export default class PredictionBox extends Component{
                 <Countdown count={countdown} color={color} className="PredictionBox_Countdown"/>
                 <MinMaxTable min={minEndTime} max={maxEndTime} className="PredictionBox_MinMaxTable"/>
                 <BarChart minData={minEndTimeGraphData[signalGroup]} maxData={maxEndTimeGraphData[signalGroup]} likelyData={likelyTimeGraphData[signalGroup]} className="PredictionBox_BarChart"/>
-                <PhaseColorGraph red={redData} green={greenData} orange={orangeData}/>
+                <PhaseColorGraph red={redData} green={greenData} orange={orangeData} className="PredictionBox_PhaseColorGraph"/>
             </div>
         )
     }
