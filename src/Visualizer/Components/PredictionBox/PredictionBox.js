@@ -7,6 +7,7 @@ import "./PredictionBox.css";
 import Downloader from "../../../Parser/Downloader";
 import FragmentHandler from "../../../Parser/FragmentHandler";
 import Dropdown from "./Selector/Dropdown";
+import ErrorBox from "./Error/ErrorBox";
 
 export default class PredictionBox extends Component{
     constructor(props){
@@ -146,6 +147,12 @@ export default class PredictionBox extends Component{
         let redData = colorData[signalGroup] && colorData[signalGroup]["https://w3id.org/opentrafficlights/thesauri/signalphase/3"];
         let greenData = colorData[signalGroup] && colorData[signalGroup]["https://w3id.org/opentrafficlights/thesauri/signalphase/6"];
         let orangeData = colorData[signalGroup] && colorData[signalGroup]["https://w3id.org/opentrafficlights/thesauri/signalphase/0"];
+
+        if(Object.keys(data).length === 0){
+            return(
+                <ErrorBox message={"No data returned: "+this.DATASET_URL}/>
+            )
+        }
 
         return (
             <div className="PredictionBox">

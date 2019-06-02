@@ -1,0 +1,22 @@
+/*alert*/
+/* The alert message box */
+.ErrorBox_alert {
+    padding: 20px;
+    background-color: #f46717;
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* The close button */
+.ErrorBox_alertCloseBtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+}
+
+/* When moving the mouse over the close button */
+.ErrorBox_alertCloseBtn:hover {
+    color: black;
+}
