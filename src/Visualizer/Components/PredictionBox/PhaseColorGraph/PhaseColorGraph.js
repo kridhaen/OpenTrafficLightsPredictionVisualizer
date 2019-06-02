@@ -15,7 +15,11 @@ class PhaseColorGraph extends Component {
                     <LineSeries data={orange} color={"orange"}/>
                     <LineSeries data={green} color={"green"}/>
                     <XAxis title={"Time"}/>
-                    <YAxis title={"Color"}/>
+                    <YAxis title={"Color"} style={{
+                         // line: {stroke: 'none'},
+                        ticks: {stroke: 'none'},
+                         text: {stroke: 'none', fill: 'none'}
+                    }}/>
                 </XYPlot>
             </div>
         );
