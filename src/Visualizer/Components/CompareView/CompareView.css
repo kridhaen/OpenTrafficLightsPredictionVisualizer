@@ -7,14 +7,8 @@
     flex-wrap: wrap;
 }
 
-/*.CompareView_left{*/
-/*    float: left;*/
-/*}*/
-/*.CompareView_right{*/
-/*    float: left;*/
-/*}*/
 @media only screen and (max-width: 600px) {
-    body {
-        background-color: lightblue;
+    .CompareView{
+        display: block;
     }
 }
