@@ -1,3 +1,8 @@
+Shows a countdown for the time to phase change of traffic lights.
+Includes a graphs that shows the countdown over time and the signal phase.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
