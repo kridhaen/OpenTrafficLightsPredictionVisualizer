@@ -145,9 +145,14 @@ export default class PredictionBox extends Component{
             }
         }
 
-        let redData = colorData[signalGroup] && colorData[signalGroup]["https://w3id.org/opentrafficlights/thesauri/signalphase/3"];
-        let greenData = colorData[signalGroup] && colorData[signalGroup]["https://w3id.org/opentrafficlights/thesauri/signalphase/6"];
-        let orangeData = colorData[signalGroup] && colorData[signalGroup]["https://w3id.org/opentrafficlights/thesauri/signalphase/0"];
+        let redData = [];
+        let greenData = [];
+        let orangeData = [];
+        colorData[signalGroup] && (Array.prototype.push.apply(redData,colorData[signalGroup]["https://w3id.org/opentrafficlights/thesauri/signalphase/3"]));
+        colorData[signalGroup] && (Array.prototype.push.apply(redData,colorData[signalGroup]["https://w3id.org/opentrafficlights/thesauri/signalphase/2"]));
+        colorData[signalGroup] && (Array.prototype.push.apply(greenData, colorData[signalGroup]["https://w3id.org/opentrafficlights/thesauri/signalphase/6"]));
+        colorData[signalGroup] && (Array.prototype.push.apply(greenData, colorData[signalGroup]["https://w3id.org/opentrafficlights/thesauri/signalphase/5"]));
+        colorData[signalGroup] && (Array.prototype.push.apply(orangeData, colorData[signalGroup]["https://w3id.org/opentrafficlights/thesauri/signalphase/0"]));
 
         if(Object.keys(data).length === 0){
             return(
