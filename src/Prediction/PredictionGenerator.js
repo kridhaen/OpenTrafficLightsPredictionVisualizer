@@ -32,6 +32,7 @@ export default class PredictionGenerator{
                 let { signalGroup, signalPhase, signalState, generatedAtTime, minEndTime, maxEndTime, observation, store, lastPhaseStart, lastPhase, phaseStart, maxDidIncrease } = returnObject;
                 let observationUTC = Helper.splitDateInParts(phaseStart);
                 let distribution = this.timeDistribution.get(signalGroup,signalPhase,observationUTC["year"],observationUTC["month"],observationUTC["day"],observationUTC["hour"],Math.floor(observationUTC["minute"]/20)*20);
+                console.log(distribution);
                 let likelyTime = PredictionManager.predictLikelyTime(signalGroup, signalPhase, generatedAtTime, minEndTime, maxEndTime, lastPhaseStart, distribution, PredictionCalculator.calculateMedianDuration, maxDidIncrease);
                 likelyTime && store.addQuad(signalState.object, namedNode('https://w3id.org/opentrafficlights#likelyTime'), literal(likelyTime,namedNode("http://www.w3.org/2001/XMLSchema#date")), observation.subject);
             },

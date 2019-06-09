@@ -143,6 +143,7 @@ export default class PredictionBox extends Component{
         let { signalGroups, activeSignalGroup, data, minEndTimeGraphData, maxEndTimeGraphData, likelyTimeGraphData, colorData } = this.state;
         let signalGroup = activeSignalGroup;
         let countdown = data[signalGroup] && data[signalGroup].likelyTime && (data[signalGroup].likelyTime.getTime() - data[signalGroup].generatedAtTime) / 1000;
+        if (countdown) countdown = Math.round(countdown*10)/10;
         let minEndTime = data[signalGroup] && (data[signalGroup].minEndTime.getTime() - data[signalGroup].generatedAtTime) / 1000;
         let maxEndTime = data[signalGroup] && (data[signalGroup].maxEndTime.getTime() - data[signalGroup].generatedAtTime) / 1000;
         let color = "-1";
