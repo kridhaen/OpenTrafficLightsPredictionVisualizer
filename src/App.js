@@ -14,9 +14,9 @@ function App() {
         <div className="App-title">OpenTrafficLightsPredictor</div>
         {/*<Drawer/>*/}
         {/*<SignalGroupDrawer/>*/}
-        {/*<PredictionBox datasetUrl={'https://lodi.ilabt.imec.be/observer/rawdata/latest'}/>*/}
+        <PredictionBox datasetUrl={'https://lodi.ilabt.imec.be/observer/rawdata/latest'} clientSidePrediction={true}/>
         {/*<PredictionBox datasetUrl={'http://localhost:8080/latest'}/>*/}
-        <CompareView/>
+        {/*<CompareView/>*/}
       </header>
     </div>
   );
