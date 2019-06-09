@@ -54,7 +54,10 @@ export default class PredictionBox extends Component{
                     this._constructSignalGroup(Object.keys(returnObject));
                 });
             }).catch(() => {
-                    console.error("download error"+this.DATASET_URL);
+                    this.setState({
+                        data: {},
+                    });
+                    console.error("data error: "+this.DATASET_URL);
                 }
             );
         }, 1000);
