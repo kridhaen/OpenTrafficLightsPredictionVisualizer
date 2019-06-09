@@ -5,6 +5,11 @@
     background-color: #f46717;
     color: white;
     margin-bottom: 15px;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left:0;
+    right: 0;
 }
 
 /* The close button */

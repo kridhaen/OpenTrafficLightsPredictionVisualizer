@@ -168,11 +168,11 @@ export default class PredictionBox extends Component{
         colorData[signalGroup] && (Array.prototype.push.apply(greenData, colorData[signalGroup]["https://w3id.org/opentrafficlights/thesauri/signalphase/5"]));
         colorData[signalGroup] && (Array.prototype.push.apply(orangeData, colorData[signalGroup]["https://w3id.org/opentrafficlights/thesauri/signalphase/0"]));
 
-        if(Object.keys(data).length === 0){
-            return(
-                <ErrorBox message={"No data returned: "+this.DATASET_URL}/>
-            )
-        }
+        // if(Object.keys(data).length === 0){
+        //     return(
+        //         <ErrorBox message={"No data returned: "+this.DATASET_URL}/>
+        //     )
+        // }
 
         return (
             <div className="PredictionBox">
@@ -181,6 +181,7 @@ export default class PredictionBox extends Component{
                 <MinMaxTable min={minEndTime} max={maxEndTime} className="PredictionBox_MinMaxTable"/>
                 <BarChart minData={minEndTimeGraphData[signalGroup]} maxData={maxEndTimeGraphData[signalGroup]} likelyData={likelyTimeGraphData[signalGroup]} className="PredictionBox_BarChart"/>
                 <PhaseColorGraph red={redData} green={greenData} orange={orangeData} className="PredictionBox_PhaseColorGraph"/>
+                {Object.keys(data).length === 0 && <ErrorBox message={"No data returned: "+this.DATASET_URL}/>}
             </div>
         )
     }
