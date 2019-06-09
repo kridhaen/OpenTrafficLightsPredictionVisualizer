@@ -1,4 +1,4 @@
-class TimeFrequencyDistribution {
+export default class TimeFrequencyDistribution {
     constructor(){
         this.frequencyDistribution = {};
     }
@@ -74,5 +74,3 @@ class TimeFrequencyDistribution {
         return output;
     }
 }
-
-module.exports = TimeFrequencyDistribution;
