@@ -8,6 +8,7 @@ import Downloader from "../../../Parser/Downloader";
 import FragmentHandler from "../../../Parser/FragmentHandler";
 import Dropdown from "./Selector/Dropdown";
 import ErrorBox from "./Error/ErrorBox";
+import PredictionGenerator from "../../../Prediction/PredictionGenerator";
 
 export default class PredictionBox extends Component{
     constructor(props){
@@ -17,7 +18,11 @@ export default class PredictionBox extends Component{
         this._constructColorGraphData = this._constructColorGraphData.bind(this);
         this._constructSignalGroup = this._constructSignalGroup.bind(this);
         this.setActiveSignalGroup = this.setActiveSignalGroup.bind(this);
+        if(props.clientSidePrediction){
+            this.predictionGenerator = new PredictionGenerator();
+        }
         this.state = {
+            clientSidePrediction: props.clientSidePrediction,
             data: {},
             colorData: {},
             colorDataOldest: {},
@@ -30,9 +35,14 @@ export default class PredictionBox extends Component{
     }
 
     componentDidMount() {
+        let { clientSidePrediction } = this.state;
         setInterval(() => {
-            Downloader.download(this.DATASET_URL).then((fragment) => {
-                FragmentHandler.handleFragment(fragment).then((returnObject) => {
+            Downloader.download(this.DATASET_URL).then(async (fragment) => {
+                let parsed = fragment;
+                if(clientSidePrediction){
+                    parsed = await this.predictionGenerator.generatePredictions(fragment);
+                }
+                FragmentHandler.handleFragment(parsed).then((returnObject) => {
                     // console.log("download success:"+this.DATASET_URL);
                     this.setState({
                         data: returnObject,

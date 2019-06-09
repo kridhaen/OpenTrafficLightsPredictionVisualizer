@@ -8,7 +8,7 @@ export default class CompareView extends Component{
         return (
             <div className="CompareView">
                 <div className="CompareView_left">
-                    <PredictionBox datasetUrl={'https://lodi.ilabt.imec.be/observer/rawdata/latest'}/>
+                    <PredictionBox datasetUrl={'https://lodi.ilabt.imec.be/observer/rawdata/latest'} clientSidePrediction={true}/>
                 </div>
                 <div className="CompareView_right">
                     <PredictionBox datasetUrl={'http://localhost:8080/latest'}/>
