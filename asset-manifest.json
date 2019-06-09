@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/OpenTrafficLightsPredictionVisualizer/static/css/main.e5e4e546.chunk.css",
+    "main.js": "/OpenTrafficLightsPredictionVisualizer/static/js/main.1d03fdc7.chunk.js",
+    "main.js.map": "/OpenTrafficLightsPredictionVisualizer/static/js/main.1d03fdc7.chunk.js.map",
+    "runtime~main.js": "/OpenTrafficLightsPredictionVisualizer/static/js/runtime~main.f919e440.js",
+    "runtime~main.js.map": "/OpenTrafficLightsPredictionVisualizer/static/js/runtime~main.f919e440.js.map",
+    "static/css/2.5a2f7233.chunk.css": "/OpenTrafficLightsPredictionVisualizer/static/css/2.5a2f7233.chunk.css",
+    "static/js/2.e04ea0a4.chunk.js": "/OpenTrafficLightsPredictionVisualizer/static/js/2.e04ea0a4.chunk.js",
+    "static/js/2.e04ea0a4.chunk.js.map": "/OpenTrafficLightsPredictionVisualizer/static/js/2.e04ea0a4.chunk.js.map",
+    "index.html": "/OpenTrafficLightsPredictionVisualizer/index.html",
+    "precache-manifest.2cbb4456bb342bcefef0353a81b71b1c.js": "/OpenTrafficLightsPredictionVisualizer/precache-manifest.2cbb4456bb342bcefef0353a81b71b1c.js",
+    "service-worker.js": "/OpenTrafficLightsPredictionVisualizer/service-worker.js",
+    "static/css/2.5a2f7233.chunk.css.map": "/OpenTrafficLightsPredictionVisualizer/static/css/2.5a2f7233.chunk.css.map",
+    "static/css/main.e5e4e546.chunk.css.map": "/OpenTrafficLightsPredictionVisualizer/static/css/main.e5e4e546.chunk.css.map"
+  }
+}
