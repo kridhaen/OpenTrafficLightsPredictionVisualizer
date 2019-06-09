@@ -148,10 +148,12 @@ export default class PredictionBox extends Component{
         let maxEndTime = data[signalGroup] && (data[signalGroup].maxEndTime.getTime() - data[signalGroup].generatedAtTime) / 1000;
         let color = "-1";
         if(data[signalGroup]){
-            if(data[signalGroup].signalPhase === "https://w3id.org/opentrafficlights/thesauri/signalphase/6"){
+            if(data[signalGroup].signalPhase === "https://w3id.org/opentrafficlights/thesauri/signalphase/6"
+                || data[signalGroup].signalPhase === "https://w3id.org/opentrafficlights/thesauri/signalphase/5"){
                 color = 6;
             }
-            else if(data[signalGroup].signalPhase === "https://w3id.org/opentrafficlights/thesauri/signalphase/3"){
+            else if(data[signalGroup].signalPhase === "https://w3id.org/opentrafficlights/thesauri/signalphase/3"
+                || data[signalGroup].signalPhase === "https://w3id.org/opentrafficlights/thesauri/signalphase/2"){
                 color = 3;
             }
             else if(data[signalGroup].signalPhase === "https://w3id.org/opentrafficlights/thesauri/signalphase/0"){
@@ -181,6 +183,7 @@ export default class PredictionBox extends Component{
                 <MinMaxTable min={minEndTime} max={maxEndTime} className="PredictionBox_MinMaxTable"/>
                 <BarChart minData={minEndTimeGraphData[signalGroup]} maxData={maxEndTimeGraphData[signalGroup]} likelyData={likelyTimeGraphData[signalGroup]} className="PredictionBox_BarChart"/>
                 <PhaseColorGraph red={redData} green={greenData} orange={orangeData} className="PredictionBox_PhaseColorGraph"/>
+                <p>After refresh of the page, it can take a few minutes before the first predictions will appear.</p>
                 {Object.keys(data).length === 0 && <ErrorBox message={"No data returned: "+this.DATASET_URL}/>}
             </div>
         )
