@@ -1,6 +1,7 @@
 Shows a countdown for the time to phase change of traffic lights.
 Includes a graphs that shows the countdown over time and the signal phase.
 
+The prediction is calculated on the client-side. Historical data is build on the go, while the client is running. Therefor it can take a few minutes before predictions will appear and the predictions at the start are not accurate, because they lack historical data.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
