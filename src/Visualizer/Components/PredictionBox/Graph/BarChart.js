@@ -3,7 +3,7 @@ import 'react-vis/dist/style.css';
 import {XYPlot, FlexibleXYPlot, VerticalBarSeries,LineSeries, LineMarkSeries, HorizontalGridLines, XAxis, YAxis} from 'react-vis';
 import './Graph.css';
 
-class LineChart extends Component {
+class BarChart extends Component {
 
     render() {
         const {minData, maxData, likelyData, title} = this.props;
@@ -23,4 +23,4 @@ class LineChart extends Component {
     }
 }
 
-export default LineChart;
+export default BarChart;
