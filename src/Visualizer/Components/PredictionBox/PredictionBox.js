@@ -104,7 +104,7 @@ export default class PredictionBox extends Component{
                 }
                 let generatedAtTime = data[signalGroup] && data[signalGroup].generatedAtTime;
                 let countdown = data[signalGroup] && (new Date(data[signalGroup][type]).getTime() - new Date(data[signalGroup].generatedAtTime)) / 1000;
-                graphData[signalGroup].push({x: generatedAtTime, y: countdown});
+                if(!isNaN(countdown)) graphData[signalGroup].push({x: generatedAtTime, y: countdown});
             }
         });
         let newState = {};
